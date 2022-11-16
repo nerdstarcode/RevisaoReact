@@ -1,6 +1,6 @@
+import './style.css';
 
-function Home() {
-
+export function Home() {
   return (
     <>
       <h1>Bora que bora</h1>
@@ -8,4 +8,3 @@ function Home() {
   )
 }
 
-export default Home
