@@ -1,10 +1,10 @@
 import './style.css'
 
-export function Card(){
+export function Card(props){
     return(
         <li className='card'>
-            <p>Nome da pessoa</p>
-            <time dateTime='HH:MM:SS'>hh:mm:ss</time>
+            <p>{props.name}</p>
+            <time dateTime={props.time}>{props.time}</time>
         </li>
     )
 }
