@@ -1,6 +1,6 @@
 import './style.css'
 
-export function Card({name, time}){
+export function Card({name, time, ...rest}){
     return(
         <li className='card'>
             <p>{name}</p>
