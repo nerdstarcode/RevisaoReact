@@ -5,7 +5,8 @@
     display: flex;
     list-style: none;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-inline: 2.5rem;
     background-color: #555555;
     font-family: 'Dancing Script', cursive;
     border: solid 0.0625rem #505050;
