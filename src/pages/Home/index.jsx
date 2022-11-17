@@ -12,6 +12,8 @@ export function Home() {
 
   const [user, setUser] = useState({name: '', avatar:''});
 
+  const [inputText, setInputText] = useState('')
+
   async function handleAddListOfNames(){
     const newName = {
       name: nameList,
@@ -19,25 +21,28 @@ export function Home() {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-      })
+      }),
     }
     //o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
     setListOfNames(prevState => [...prevState, newName]);
     
   }
-  if(listOfNames.length > 0){
-    (function saveLocalStorage(){
-      try{
+  useEffect(()=>{
 
-        localStorage.setItem('listOfNames', JSON.stringify(listOfNames));//sei que não tem necessidade, mas vou mudar essa parte para um BD depois
-        console.log('Salvo no localStorage'); 
-      }catch(e){
-        console.log('Não foi possível salvar no localStorage');
-      }
-    })(listOfNames)
-  }
-  // executa uma vez ANTES da renderizão da página ou ao ter uma alteração em algo dentro do seu vetor de verificação
+    if(listOfNames.length > 0){
+      (function saveLocalStorage(){
+        try{
+
+          localStorage.setItem('listOfNames', JSON.stringify(listOfNames));//sei que não tem necessidade, mas vou mudar essa parte para um BD depois
+          console.log('Salvo no localStorage'); 
+        }catch(e){
+          console.log('Não foi possível salvar no localStorage');
+        }
+      })()
+    }
+  }, [listOfNames]);
   useLayoutEffect(()=>{
+  // executa uma vez ANTES da renderizão da página ou ao ter uma alteração em algo dentro do seu vetor de verificação
     async function fetchData(){
       const data = await fetch('https://api.github.com/users/nerdstarcode').then(response => response.json());
       setUser({
@@ -80,13 +85,21 @@ export function Home() {
       <input 
         type="text" 
         placeholder='Digite o nome...' 
-        onChange={e => setNameList(e.target.value)}
+        onChange={e => (
+          setNameList(e.target.value),
+          setInputText(e.target.value)
+          )
+        }
+        value={inputText}
       />
       <button 
         type='button' 
-        onClick={handleAddListOfNames}
+        onClick={()=>{
+          handleAddListOfNames(),
+          setInputText('')
+        }}
       >
-        Adicionar {nameList}
+        Adicionar {inputText}
       </button>
       
       {
