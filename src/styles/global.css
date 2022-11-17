@@ -3,3 +3,8 @@
     padding: 0;
     box-sizing: border-box;
 }
+body, input, button{
+    background-color: #505050;
+    font-family: 'Shadows Into Light', cursive;
+    -webkit-font-smoothing: antialiased;
+}
