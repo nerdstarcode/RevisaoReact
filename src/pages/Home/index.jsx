@@ -1,18 +1,18 @@
 import './style.css';
 
 import { Card } from '../../components/Card'
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 
 
 
 export function Home() {
   const [nameList, setNameList] = useState('');
 
-  const [names, setNames] = useState([]);
+  const [listOfNames, setListOfNames] = useState([]);
 
   const [user, setUser] = useState({name: '', avatar:''});
 
-  function handleAddNames(){
+  async function handleAddListOfNames(){
     const newName = {
       name: nameList,
       time: new Date().toLocaleTimeString("pt-br", {
@@ -21,19 +21,43 @@ export function Home() {
         second: '2-digit',
       })
     }
-    setNames(prevState => [...prevState, newName])//o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
+    //o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
+    setListOfNames(prevState => [...prevState, newName]);
+    
+  }
+  if(listOfNames.length > 0){
+    (function saveLocalStorage(){
+      try{
+
+        localStorage.setItem('listOfNames', JSON.stringify(listOfNames));//sei que não tem necessidade, mas vou mudar essa parte para um BD depois
+        console.log('Salvo no localStorage'); 
+      }catch(e){
+        console.log('Não foi possível salvar no localStorage');
+      }
+    })(listOfNames)
   }
   // executa uma vez ANTES da renderizão da página ou ao ter uma alteração em algo dentro do seu vetor de verificação
   useLayoutEffect(()=>{
     async function fetchData(){
-      const response = await fetch('https://api.github.com/users/nerdstarcode');
-      const data = await response.json();
+      const data = await fetch('https://api.github.com/users/nerdstarcode').then(response => response.json());
       setUser({
         name: data.name,
         avatar: data.avatar_url,
       });
     }
-    fetchData()
+    function getLocalStorage(){
+      try{
+        const listOfNamesList = JSON.parse(localStorage.listOfNames);
+        console.log(listOfNamesList);
+        if(listOfNamesList !== undefined){
+          setListOfNames(listOfNamesList);
+        }
+      }catch(e){
+        console.log('Não foi possível acessar o localStorage');
+      }
+    }
+    fetchData();
+    getLocalStorage();
     // fetch('https://api.github.com/users/nerdstarcode')
     //   .then(response => response.json())
     //   .then(data => {
@@ -60,17 +84,17 @@ export function Home() {
       />
       <button 
         type='button' 
-        onClick={handleAddNames}
+        onClick={handleAddListOfNames}
       >
         Adicionar {nameList}
       </button>
       
       {
-        names.map(names => (
+        listOfNames.map(listOfNames => (
           <Card 
-            key={names.time} 
-            name={names.name} 
-            time={names.time}
+            key={listOfNames.time} 
+            name={listOfNames.name} 
+            time={listOfNames.time}
           />
         ))
       }
