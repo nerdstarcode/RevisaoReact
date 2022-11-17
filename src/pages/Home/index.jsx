@@ -23,16 +23,25 @@ export function Home() {
     }
     setNames(prevState => [...prevState, newName])//o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
   }
-  // executa uma vez após a renderizão da página ou ao ter uma alteração em algo dentro do seu vetor de verificação
+  // executa uma vez ANTES da renderizão da página ou ao ter uma alteração em algo dentro do seu vetor de verificação
   useLayoutEffect(()=>{
-    fetch('https://api.github.com/users/nerdstarcode')
-    .then(response => response.json())
-    .then(data => {
+    async function fetchData(){
+      const response = await fetch('https://api.github.com/users/nerdstarcode');
+      const data = await response.json();
       setUser({
         name: data.name,
         avatar: data.avatar_url,
-      })
-    })
+      });
+    }
+    fetchData()
+    // fetch('https://api.github.com/users/nerdstarcode')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setUser({
+    //       name: data.name,
+    //       avatar: data.avatar_url,
+    //     })
+    //   })
   }, []);
   return (
     <div className="container">
