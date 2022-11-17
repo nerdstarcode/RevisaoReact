@@ -1,0 +1,24 @@
+.card
+{
+    width: 50%;
+    height: 6.25rem;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #555555;
+    font-family: 'Dancing Script', cursive;
+    border: solid 0.0625rem #505050;
+    border-radius: 0.3125rem;
+    margin-bottom: 0.625rem;
+}
+.card p
+{
+    font-size: 1.6rem;
+    color: #fff;
+}
+.card time
+{
+    color: #a8a8a8
+
+}

@@ -2,9 +2,9 @@ import './style.css'
 
 export function Card(){
     return(
-        <>
-            <strong>Nome da pessoa</strong>
+        <li className='card'>
+            <p>Nome da pessoa</p>
             <time dateTime='HH:MM:SS'>hh:mm:ss</time>
-        </>
+        </li>
     )
 }
