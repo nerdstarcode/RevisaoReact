@@ -1,7 +1,7 @@
 import './style.css';
 
 import { Card } from '../../components/Card'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
@@ -9,6 +9,8 @@ export function Home() {
   const [nameList, setNameList] = useState('');
 
   const [names, setNames] = useState([]);
+
+  const [user, setUser] = useState({name: '', avatar:''});
 
   function handleAddNames(){
     const newName = {
@@ -21,14 +23,24 @@ export function Home() {
     }
     setNames(prevState => [...prevState, newName])//o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
   }
-
+  // executa uma vez após a renderizão da página ou ao ter uma alteração em algo dentro do seu vetor de verificação
+  useEffect(()=>{
+    fetch('https://api.github.com/users/nerdstarcode')
+    .then(response => response.json())
+    .then(data => {
+      setUser({
+        name: data.name,
+        avatar: data.avatar_url,
+      })
+    })
+  }, []);
   return (
     <div className="container">
       <header>
         <h1>Lista de Presença</h1>
         <div className='perfil'>
-          <strong>Sthiven</strong>
-          <img src="https://github.com/nerdstarcode.png" alt="Foto de perfil" />
+          <strong>{user.name}</strong>
+          <img src={user.avatar} alt="Foto de perfil" />
         </div>
       </header>
 
