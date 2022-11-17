@@ -85,3 +85,8 @@ Ao importar a função do arquivo jsx você pode usar como se fosse uma tag no H
   - Como exemplo a [Home](https://github.com/nerdstarcode/RevisaoReact/tree/master/src/pages/Home)
       
         Onde se encontra um arquivo index.jsx e sua estilização
+- [components](https://github.com/nerdstarcode/RevisaoReact/tree/master/src/components)
+    
+      Onde ficam os componentes a serem uzados
+  - Como por exemplo o [Card](https://github.com/nerdstarcode/RevisaoReact/tree/master/src/components/Card)
+  
