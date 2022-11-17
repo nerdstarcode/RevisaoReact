@@ -1,23 +1,45 @@
 import './style.css';
 
 import { Card } from '../../components/Card'
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
+
 
 export function Home() {
-  const [nomeList, setNomeList] = useState();
+  const [nameList, setNameList] = useState('');
+
+  const [names, setNames] = useState([]);
+
+  function handleAddNames(){
+    const newName = {
+      name: nameList,
+      time: new Date().toLocaleTimeString("pt-br", {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      })
+    }
+    setNames(prevState => [...prevState, newName])//o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
+  }
+
   return (
     <div className="container">
       <h1>Lista de Presença</h1>
       <input 
         type="text" 
         placeholder='Digite o nome...' 
-        onChange={e => setNomeList(e.target.value)}
+        onChange={e => setNameList(e.target.value)}
         />
-      <button type='button'>Adicionar {nomeList}</button>
+      <button 
+        type='button' 
+        onClick={handleAddNames}
+      >
+        Adicionar {nameList}
+      </button>
       
-      <Card name="Rodrigo" time="10:55:25"/>
-      <Card name="Roberto" time="10:56:10"/>
-      <Card name="Ronaldo" time="11:00:05"/>
+      {
+        names.map(names => <Card name={names.name} time={names.time}/>)
+      }
     </div>
   )
 }
