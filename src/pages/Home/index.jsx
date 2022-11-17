@@ -38,7 +38,13 @@ export function Home() {
       </button>
       
       {
-        names.map(names => <Card name={names.name} time={names.time}/>)
+        names.map(names => (
+          <Card 
+            key={names.time} 
+            name={names.name} 
+            time={names.time}
+          />
+        ))
       }
     </div>
   )
