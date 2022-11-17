@@ -1,10 +1,10 @@
 import './style.css'
 
-export function Card(props){
+export function Card({name, time}){
     return(
         <li className='card'>
-            <p>{props.name}</p>
-            <time dateTime={props.time}>{props.time}</time>
+            <p>{name}</p>
+            <time dateTime={time}>{time}</time>
         </li>
     )
 }
