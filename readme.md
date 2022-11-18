@@ -89,4 +89,14 @@ Ao importar a função do arquivo jsx você pode usar como se fosse uma tag no H
     
       Onde ficam os componentes a serem usados
   - Como por exemplo o [Card](https://github.com/nerdstarcode/RevisaoReact/tree/master/src/components/Card)
-  
+
+## [Storybook](https://storybook.js.org/)
+É uma ferramenta que ajuda na documentação para o frontend, mostrando de forma fácil quais são os parâmetros que um certo elemento recebe e quais são suas variações. 
+
+Um documento já feito para demonstração nesse commit é o [Card](https://github.com/nerdstarcode/RevisaoReact/tree/master/src/components/Card) sendo o componente no storybook referente a ele o [Card.stories.jsx](https://github.com/nerdstarcode/RevisaoReact/tree/master/src/components/Card/Card.stories.jsx)
+
+Para rodar o storybook é necesário usar o seguinte comando no terminal:
+```bash
+  npm run storybook
+```
+Por padrão a configuração é para que ele rode na porta 6006, caso esteja ocupada ele perguntará se pode mudar para a próxima disponível, é só aceitar que dá tudo certo

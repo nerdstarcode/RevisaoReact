@@ -7,11 +7,8 @@ import React, { useState, useLayoutEffect, useEffect } from 'react';
 
 export function Home() {
   const [nameList, setNameList] = useState('');
-
   const [listOfNames, setListOfNames] = useState([]);
-
   const [user, setUser] = useState({name: '', avatar:''});
-
   const [inputText, setInputText] = useState('')
 
   async function handleAddListOfNames(){
@@ -25,7 +22,6 @@ export function Home() {
     }
     //o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
     setListOfNames(prevState => [...prevState, newName]);
-    
   }
   useEffect(()=>{
 
@@ -81,7 +77,6 @@ export function Home() {
           <img src={user.avatar} alt="Foto de perfil" />
         </div>
       </header>
-
       <input 
         type="text" 
         placeholder='Digite o nome...' 
