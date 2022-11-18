@@ -67,7 +67,8 @@ export function Controller({setListOfNames}){
                 type='button' 
                 onClick={()=>{
                 handleAddListOfNames(),
-                setInputText('')
+                setInputText(''),
+                setButtonController(true)
                 }}
             >
                 Adicionar {inputText}
