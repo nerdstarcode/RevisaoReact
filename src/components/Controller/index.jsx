@@ -5,7 +5,19 @@ export function Controller({setListOfNames}){
     const [inputText, setInputText] = useState('')
     const [user, setUser] = useState({name: '', avatar:''});
     const [nameList, setNameList] = useState('');
+    const [buttonController, setButtonController] = useState(true)
 
+    function verificationName(inputValue){
+        try{
+            if(inputValue !== ''){
+                setButtonController(false)
+            }else{
+                setButtonController(true)
+            }
+        }catch(e){
+            console.log('Não foi possível mudar o estado do botão')
+        }
+    }
     async function handleAddListOfNames(){
         const newName = {
           name: nameList,
@@ -43,13 +55,15 @@ export function Controller({setListOfNames}){
                 type="text" 
                 placeholder='Digite o nome...' 
                 onChange={e => (
-                setNameList(e.target.value),
-                setInputText(e.target.value)
-                )
-                }
+                    setNameList(e.target.value),
+                    setInputText(e.target.value),
+                    verificationName(e.target.value),
+                    console.log(e.target.value)
+                )}
                 value={inputText}
             />
             <button 
+                disabled={buttonController}
                 type='button' 
                 onClick={()=>{
                 handleAddListOfNames(),

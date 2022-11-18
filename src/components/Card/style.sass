@@ -9,8 +9,8 @@
     align-items: center
     justify-content: space-between
     font-family: text.$font-secondary
-    background-color: colors.$grey-400
-    border: solid 0.0625rem colors.$grey-500
+    background-color: colors.$blue-500
+    border: solid 0.0625rem colors.$blue-600
     border-radius: 0.3125rem
     margin-bottom: 0.625rem
     position: relative
@@ -25,17 +25,19 @@
         &::before
             content: ""
             left: 0
-            top: 0
-            bottom: 0
+            top: 5%
+            bottom: 5%
             width: 1px
             transition: all 0.5s
             border-radius: 0.3125rem
             position: absolute
-            background-color: colors.$cyan-600
+            background-color: colors.$blue-300
         &:hover::before
             content: ""
             border-radius: 0.3125rem
             transition: all 0.5s
+            top: 0
+            bottom: 0
             width: 50%
             cursor: pointer
     time
@@ -55,13 +57,13 @@
         &::after
             content: ""
             right: 0
-            top: 0
-            bottom: 0
+            top: 5%
+            bottom: 5%
             width: 1px
             transition: all 0.5s
             border-radius: 0.3125rem
             position: absolute
-            background-color: colors.$brown-600
+            background-color: colors.$blue-400
         &:hover
             span 
                 opacity: 1
@@ -77,3 +79,5 @@
                 transition: all 0.5s
                 width: 50%
                 cursor: pointer
+                top: 0
+                bottom: 0
