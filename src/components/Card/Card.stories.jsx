@@ -10,6 +10,11 @@ export default{
             second: '2-digit',
         }),
     },
+    parameters: {
+        actions: {
+          handles: ['mouseover time', 'click span', 'mouseover p'],
+        },
+    },
    
 }
 
@@ -20,5 +25,6 @@ export const Default = {
                 disable: true,
             }
         },
-    }
+        onClick: { action: 'clicked' },
+    },
 }
