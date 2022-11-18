@@ -1,4 +1,4 @@
-import './style.css';
+import './style.sass';
 
 import { Card } from '../../components/Card'
 import React, { useState, useLayoutEffect, useEffect } from 'react';
