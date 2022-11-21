@@ -23,6 +23,8 @@
         display: flex
         align-items: center
         padding-left: 2.5rem
+        span
+            @include mixins.spanCard('left')
         &::before
             content: ""
             left: 0
@@ -44,8 +46,7 @@
                 bottom: 0
                 width: 50%
                 cursor: pointer
-        span
-            @include mixins.spanCard('left')
+        
     time
         color: colors.$grey-200
         width: 50%
@@ -68,7 +69,6 @@
             background-color: colors.$blue-400
         &:hover
             span 
-                font-size: 1.6rem
                 @include mixins.spanCardHover('right')
             &::after
                 content: ""
