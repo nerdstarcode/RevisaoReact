@@ -25,6 +25,5 @@ export const Default = {
                 disable: true,
             }
         },
-        onClick: { action: 'clicked' },
     },
 }

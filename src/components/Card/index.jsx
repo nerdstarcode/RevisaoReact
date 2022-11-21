@@ -3,7 +3,10 @@ import './style.sass'
 export function Card({name, time, ...rest}){
     return(
         <li className='card'>
-            <p>{name}</p>
+            <p>
+                <span>Pontos</span>
+                {name}
+            </p>
             <time dateTime={time}>
                 {time}
                 <span>Remover</span>
