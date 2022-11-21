@@ -7,7 +7,7 @@ export function Controller({setListOfNames}){
     const [nameList, setNameList] = useState('');
     const [buttonController, setButtonController] = useState(true)
 
-    function verificationName(inputValue){
+    function verificationName(inputValue: string){
         try{
             if(inputValue !== ''){
                 setButtonController(false)

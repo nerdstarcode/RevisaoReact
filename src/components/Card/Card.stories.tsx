@@ -1,4 +1,5 @@
-import { Card } from '.'
+import { Card, CardProps } from '.'
+import { Meta, StoryObj } from '@storybook/react'
 export default{
     title: 'Components/Card',
     component: Card,
@@ -16,9 +17,9 @@ export default{
         },
     },
    
-}
+} as Meta<CardProps>
 
-export const Default = {
+export const Default: StoryObj<CardProps> = {
     argTypes: {
         time: {
             table: {

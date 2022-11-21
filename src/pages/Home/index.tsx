@@ -1,11 +1,13 @@
 import './style.sass';
 
-import { Card } from '../../components/Card'
+import { Card, CardProps } from '../../components/Card'
+
 import { Controller } from '../../components/Controller'
 import React, { useState, useLayoutEffect, useEffect } from 'react';
+import { stringify } from 'querystring';
 
 export function Home() {
-  const [listOfNames, setListOfNames] = useState([]);
+  const [listOfNames, setListOfNames] = useState<CardProps[]>([]);
 
   useEffect(()=>{
     if(listOfNames.length > 0){

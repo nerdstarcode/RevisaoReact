@@ -1,6 +1,13 @@
+import React from 'react'
 import './style.sass'
 
-export function Card({name, time, ...rest}){
+export interface CardProps{
+    name: string,
+    time: string,
+    key?: string 
+}
+
+export function Card({name, time, key}: CardProps){
     return(
         <li className='card'>
             <p>
