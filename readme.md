@@ -100,3 +100,51 @@ Para rodar o storybook é necesário usar o seguinte comando no terminal:
   npm run storybook
 ```
 Por padrão a configuração é para que ele rode na porta 6006, caso esteja ocupada ele perguntará se pode mudar para a próxima disponível, é só aceitar que dá tudo certo
+
+## Clsx
+```bash
+  npm install --save clsx
+```
+Exemplo de uso:
+```jsx
+  import { clsx } from 'clsx';
+
+  // Strings (variadic)
+  clsx('foo', true && 'bar', 'baz');
+  //=> 'foo bar baz'
+
+  // Objects
+  clsx({ foo:true, bar:false, baz:isTrue() });
+  //=> 'foo baz'
+
+  // Objects (variadic)
+  clsx({ foo:true }, { bar:false }, null, { '--foobar':'hello' });
+  //=> 'foo --foobar'
+
+  // Arrays
+  clsx(['foo', 0, false, 'bar']);
+  //=> 'foo bar'
+
+  // Arrays (variadic)
+  clsx(['foo'], ['', 0, false, 'bar'], [['baz', [['hello'], 'there']]]);
+  //=> 'foo bar baz hello there'
+
+  // Kitchen sink (with nesting)
+  clsx('foo', [1 && 'bar', { baz:false, bat:null }, ['hello', ['world']]], 'cya');
+  //=> 'foo bar hello world cya'
+```
+
+## Radix Slot
+```bash
+  npm install @radix-ui/react-slot
+```
+Exemplo de uso:
+```jsx
+  import React from 'react';
+  import { Slot } from '@radix-ui/react-slot';
+
+  function Button({ asChild, ...props }) {
+    const Comp = asChild ? Slot : 'button';
+    return <Comp {...props} />;
+  }
+```
