@@ -1,8 +1,8 @@
-import { Text, TextProps } from './'
+import { Title, TitleProps } from '.'
 import { Meta, StoryObj } from '@storybook/react'
 export default{
-    title: 'Components/Controller/Text',
-    component: Text,
+    title: 'Components/Controller/Title',
+    component: Title,
     args: {
         size: 'lg',
         text: 'hello!',
@@ -24,26 +24,25 @@ export default{
         },
         component:{
             description: 'Tag html a ser usada no componente Text',
-            options: ['h1', 'p', 'a', 'strong', 'small'],
+            options: ['h5', 'h4', 'h3', 'h2', 'h1'],
             control: {
                 type: 'inline-radio'
             },
         },
     }
-   
-} as Meta<TextProps>
+} as Meta<TitleProps>
 
-export const Default: StoryObj<TextProps> = {
+export const Default: StoryObj<TitleProps> = {
     args:{
         size: 'lg',
     },
 }
-export const mdText: StoryObj<TextProps> = {
+export const mdText: StoryObj<TitleProps> = {
     args:{
         size: 'md',
     },
 }
-export const smText: StoryObj<TextProps> = {
+export const smText: StoryObj<TitleProps> = {
     args:{
         size: 'sm',
     },
