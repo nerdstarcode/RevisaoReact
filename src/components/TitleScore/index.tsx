@@ -3,37 +3,61 @@ import {clsx} from 'clsx'
 import { Slot } from '@radix-ui/react-slot';
 import './style.sass'
 
-export interface TitleProps{
-    size?: 'lg' | 'md' | 'sm',
-    TitleChild: 'h2'| 'h3' | 'h4' | 'img',
-    text?: string,
+export interface TitleScoreProps{
+    TitleChild: 'h2'| 'h3' | 'img',
+    TitleChildsize?: 'lg' | 'md' | 'sm',
+    TitleChildtext?: string,
+
+    SubTitleChild: 'h3'| 'h4',
+    SubTitleChildsize?: 'md' | 'sm',
+    SubTitleChildtext?: string,
     src?: string,
+    alt?: string,
 }
 
-export function TitleScore(Props: TitleProps) {
+export function TitleScore(Props: TitleScoreProps) {
 
     return(
         <div 
-            className="TitleScore"
+            className="TitleScoreComponent"
         >
             {
                 Props.TitleChild !== 'img' ?  (
                     <Props.TitleChild
-                        className="
-                            
-                        "
+                        className={
+                            clsx(
+                                {
+                                    'title-sm' : Props.TitleChildsize == 'sm',
+                                    'title-md' : Props.TitleChildsize == 'md',
+                                    'title-lg' : Props.TitleChildsize == 'lg',
+                                },
+                            )
+                        }
                     >
-                        {Props.text}
+                        {Props.TitleChildtext}
                     </Props.TitleChild>
                 ) : (
                     <img 
-                        src="" 
-                        alt="" 
+                        src={Props.src} 
+                        alt={Props.alt}
                     />
                 )
-
             }
-            
+            <hr/>
+            <Props.SubTitleChild
+                className={
+                    clsx(
+                        'subtitleComponent',
+                        {
+                            'subtitle-sm' : Props.TitleChildsize == 'sm',
+                            'subtitle-md' : Props.TitleChildsize == 'md',
+                        },
+                    )
+                }
+            >
+                {Props.SubTitleChildtext}
+            </Props.SubTitleChild>
+
         </div>
     )
 }

@@ -4,12 +4,8 @@ import { Card, CardProps } from '../../components/Card'
 
 import { Controller } from '../../components/Controller'
 import React, { useState, useLayoutEffect, useEffect } from 'react';
-import { stringify } from 'querystring';
-import { Title } from '../../components/Title';
-
 export function Home() {
   const [listOfNames, setListOfNames] = useState<CardProps[]>([]);
-
   useEffect(()=>{
     if(listOfNames.length > 0){
       (function saveLocalStorage(){
@@ -35,6 +31,16 @@ export function Home() {
         console.log('Não foi possível acessar o localStorage');
       }
     })()
+    if(listOfNames.length > 0){
+      (function saveLocalStorage(){
+        try{
+          localStorage.setItem('listOfNames', JSON.stringify(listOfNames));//sei que não tem necessidade, mas vou mudar essa parte para um BD depois
+          console.log('Salvo no localStorage'); 
+        }catch(e){
+          console.log('Não foi possível salvar no localStorage');
+        }
+      })()
+    }
   }, []);
 
   return (

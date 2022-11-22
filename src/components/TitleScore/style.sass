@@ -1,10 +1,27 @@
 @use "../../styles/colors"
-.titleComponent
-    margin: 0
+@use "../../styles/text"
+.TitleScoreComponent
     color: colors.$blue-300
-.title-sm
-    font-size: 1.5rem 
-.title-md
-    font-size: 1.75rem
-.title-lg
-    font-size: 2.21rem
+    font-family: text.$font-secondary
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: fit-content
+    padding-inline: 2.5%
+    .TitleScore-sm
+        font-size: text.$title-size-sm
+    .TitleScore-md
+        font-size: text.$title-size-md
+    .TitleScore-lg
+        font-size: text.$title-size-lg
+    hr
+        width: 110%
+        height: 0.5rem
+        border-radius: 0.25rem
+        margin-inline: 2.5%
+        background-color: colors.$blue-300
+        border-style: none
+    img
+        width: 50%
+        transform: translateY(5px)
+
