@@ -7,6 +7,7 @@ export default{
         size: 'lg',
         text: 'hello!',
         component: 'h1',
+        font: 'primary',
     },
     argTypes: {
         size:{
@@ -23,8 +24,15 @@ export default{
             },
         },
         component:{
-            description: 'Tag html a ser usada no componente Text',
+            description: 'Tag html a ser usada no componente Title',
             options: ['h5', 'h4', 'h3', 'h2', 'h1'],
+            control: {
+                type: 'inline-radio'
+            },
+        },
+        font:{
+            description: 'Fonte do titulo',
+            options: ['primary', 'secondary'],
             control: {
                 type: 'inline-radio'
             },

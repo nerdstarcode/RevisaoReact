@@ -5,6 +5,7 @@ import { Card, CardProps } from '../../components/Card'
 import { Controller } from '../../components/Controller'
 import React, { useState, useLayoutEffect, useEffect } from 'react';
 import { stringify } from 'querystring';
+import { Title } from '../../components/Title';
 
 export function Home() {
   const [listOfNames, setListOfNames] = useState<CardProps[]>([]);
@@ -35,6 +36,7 @@ export function Home() {
       }
     })()
   }, []);
+
   return (
     <div className="container">
       <Controller
