@@ -7,7 +7,7 @@ export interface CardProps{
     key?: string 
 }
 
-export function Card({name, time, key}: CardProps){
+export function Card({name, time}: CardProps){
     return(
         <li className='card'>
             <p>

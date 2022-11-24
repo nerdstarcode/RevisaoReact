@@ -30,7 +30,6 @@ export function Controller({setListOfNames}){
         //o prevState recupera valores anteriores do estado, pode-se usar o nome que quiser
         setListOfNames(prevState => [...prevState, newName]);
     }
-
     useLayoutEffect(()=>{
         // executa uma vez ANTES da renderizão da página ou ao ter uma alteração em algo dentro do seu vetor de verificação
         async function fetchData(){
@@ -43,7 +42,7 @@ export function Controller({setListOfNames}){
         fetchData();
     }, []);
     return(
-        <form className='container'>
+        <form className='Container-Controll'>
             <header>
                 <h1>Lista de Presença</h1>
                 <div className='perfil'>
@@ -57,8 +56,7 @@ export function Controller({setListOfNames}){
                 onChange={e => (
                     setNameList(e.target.value),
                     setInputText(e.target.value),
-                    verificationName(e.target.value),
-                    console.log(e.target.value)
+                    verificationName(e.target.value)
                 )}
                 value={inputText}
             />

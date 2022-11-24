@@ -1,9 +1,10 @@
 import './style.sass';
 
 import { Card, CardProps } from '../../components/Card'
-
 import { Controller } from '../../components/Controller'
+
 import React, { useState, useLayoutEffect, useEffect } from 'react';
+
 export function Home() {
   const [listOfNames, setListOfNames] = useState<CardProps[]>([]);
   useEffect(()=>{
@@ -44,7 +45,7 @@ export function Home() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="Container-Cards">
       <Controller
         setListOfNames={setListOfNames}
       />
